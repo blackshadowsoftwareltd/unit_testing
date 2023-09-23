@@ -1,8 +1,5 @@
 pub mod functions;
 
-fn main() {
-    println!("Hello, world!");
-}
 #[cfg(test)]
 pub mod test_module {
     use super::*;
