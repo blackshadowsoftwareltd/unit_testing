@@ -1,6 +1,3 @@
-pub fn first_word(text: &str) -> &str {
-    match text.find(' ') {
-        Some(idx) => &text[..idx],
-        None => &text,
-    }
+pub fn concat_tow_str(x: &str, y: &str) -> String {
+    format!("{}{}", x, y)
 }
