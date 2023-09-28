@@ -1,28 +1,17 @@
-pub mod functions;
+// pub mod functions;
+use rstest::*;
 
-#[test]
-fn fails_and_panics() {
-    googletest::assert_that!(functions::sum_of_a(5), googletest::prelude::eq(10));
+#[rstest]
+fn is_equal_10(number_10: i32) {
+    assert_eq!(number_10, 15);
 }
 
-#[googletest::test]
-fn two_logged_failures() {
-    googletest::expect_that!(functions::sum_of_a(5), googletest::prelude::eq(10));
+#[rstest]
+fn is_not_equal_10(number_10: i32) {
+    assert_ne!(number_10, 15);
 }
 
-#[test]
-fn fails_immediately_without_panic() -> googletest::Result<()> {
-    googletest::verify_that!(functions::sum_of_a(5), googletest::prelude::eq(10))?;
-    Ok(())
+#[fixture]
+pub fn number_10() -> i32 {
+    10
 }
-
-/*
-#[test]
-fn simple_assertion() -> googletest::Result<()> {
-    googletest::expect_that!(
-        functions::arr_of_b(10),
-        googletest::prelude::contains(googletest::prelude::ge(0))
-    );
-    Ok(())
-}
-*/
