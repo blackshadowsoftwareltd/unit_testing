@@ -8,3 +8,4 @@ edition = "2021"
 [dependencies]
 
 rstest = "0.18"
+rstest_reuse = "0.6.0"
