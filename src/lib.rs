@@ -1,23 +1,10 @@
 pub mod functions;
 use rstest::*;
-use rstest_reuse::{self, *};
 
-// ? custom template for reuse test case
-#[template]
 #[rstest]
-#[case(3, 10)]
-#[case(5, 10)]
-#[case(7, 10)]
-fn test_template(#[case] a: i32, #[case] b: i32) {}
+#[case("1.2.3.4:8080", 8080)]
+#[case("127.0.0.1:9000", 9000)]
 
-// ? applying a custom template on a test function
-#[apply(test_template)]
-fn is_valid(a: i32, b: i32) {
-    assert_eq!(functions::sum_of_arr(a), b);
-}
-
-// ? applying a custom template on another test function
-#[apply(test_template)]
-fn is_equal(a: i32, b: i32) {
-    assert_eq!(functions::sum_of_arr(a), b)
+fn check_port(#[case] addr: std::net::SocketAddr, #[case] expected: u16) {
+    assert_eq!(addr.port(), expected);
 }
